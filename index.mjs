@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 let data = '';
 
-app.post('/super-secret-domain-trust-yes-beans', async (req, res) => {
+app.post('/', async (req, res) => {
     if (req && req.body && req.body.signature === "hello_im_an_executor") {
         // console.log("Request allowed!");
 
@@ -21,13 +21,13 @@ app.post('/super-secret-domain-trust-yes-beans', async (req, res) => {
             console.log('Success:', c);
             res.status(200)
         } catch (error) {
-            // console.error('Error:', error);
+            console.error('Error:', error);
             res.sendStatus(500);
         }
     }
 });
 
-app.get('/super-secret-domain-trust-yes-beans', (req, res) => {
+app.get('/', (_, res) => {
     res.send(data);
 });
 
